@@ -1,0 +1,29 @@
+{
+    "name": "appaydin/pd-activity",
+    "description": "Symfony Activity Log Bundle",
+    "homepage": "https://github.com/appaydin/pd-activity",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "keywords": [
+        "pd-admin",
+        "pd-activity",
+        "activity-log",
+        "symfony-log"
+    ],
+    "authors": [
+        {
+            "name": "Ramazan APAYDIN",
+            "homepage": "https://github.com/appaydin"
+        }
+    ],
+    "require": {
+        "php": ">=8.0.0",
+        "symfony/mailer": "5.*",
+        "symfony/messenger": "5.2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pd\\ActivityBundle\\": ""
+        }
+    }
+}
