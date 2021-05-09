@@ -19,7 +19,7 @@
     "require": {
         "php": ">=8.0.0",
         "symfony/mailer": "5.*",
-        "symfony/messenger": "5.2.*"
+        "symfony/messenger": "5.*"
     },
     "autoload": {
         "psr-4": {
