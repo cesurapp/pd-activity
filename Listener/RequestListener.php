@@ -43,7 +43,7 @@ class RequestListener implements EventSubscriberInterface
 
             // Check Uri Match
             if ($this->bag->get('pd_activity.request_match_uri') &&
-                !preg_match('/'.$this->bag->get('pd_activity.request_match_uri').'/i', $request->getRequestUri())) {
+                !preg_match("{{$this->bag->get('pd_activity.request_match_uri')}}", $request->getRequestUri())) {
                 return;
             }
 
