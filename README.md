@@ -56,6 +56,7 @@ Create a "pd_activity.yaml" file for the settings.
 pd_activity:
     log_mailer: true
     log_request: true
+    log_ajax_request: false
     request_exclude_methods: [] # example: ['GET','POST','PATCH', ...]
     request_match_uri: ^\/admin
 ```

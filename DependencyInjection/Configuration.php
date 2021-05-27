@@ -26,6 +26,7 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->booleanNode('log_mailer')->defaultTrue()->end()
                 ->booleanNode('log_request')->defaultTrue()->end()
+                ->booleanNode('log_ajax_request')->defaultFalse()->end()
                 ->arrayNode('request_exclude_methods')->scalarPrototype()->end()->defaultValue([])->end()
                 ->scalarNode('request_match_uri')->defaultValue('')->end()
             ->end();

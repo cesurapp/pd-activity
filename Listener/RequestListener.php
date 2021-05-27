@@ -25,7 +25,8 @@ class RequestListener implements EventSubscriberInterface
         private ParameterBagInterface $bag,
         private TokenStorageInterface $tokenStorage,
         private MessageBusInterface $bus
-    ) {
+    )
+    {
     }
 
     /**
@@ -44,6 +45,11 @@ class RequestListener implements EventSubscriberInterface
             // Check Uri Match
             if ($this->bag->get('pd_activity.request_match_uri') &&
                 !preg_match("{{$this->bag->get('pd_activity.request_match_uri')}}", $request->getRequestUri())) {
+                return;
+            }
+
+            // Check Ajax Request
+            if (!$this->bag->get('pd_activity.log_ajax_request') && $request->isXmlHttpRequest()) {
                 return;
             }
 
