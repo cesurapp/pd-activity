@@ -91,6 +91,11 @@ class ActivityLog
         return $this->method;
     }
 
+    public function getMethodReadable(): ?string
+    {
+        return array_flip(self::METHODS)[$this->method] ?? null;
+    }
+
     public function setMethod(int $method): self
     {
         $this->method = $method;

@@ -79,6 +79,11 @@ class MailLog
         return Address::createArray($this->mailTo);
     }
 
+    public function getMailToArray(): ?array
+    {
+        return $this->mailTo;
+    }
+
     public function setMailTo(array $mailTo): self
     {
         $this->mailTo = $this->addressToString($mailTo);
@@ -89,6 +94,11 @@ class MailLog
     public function getMailFrom(): ?array
     {
         return Address::createArray($this->mailFrom);
+    }
+
+    public function getMailFromArray(): ?array
+    {
+        return $this->mailFrom;
     }
 
     public function setMailFrom(array $mailFrom): self
@@ -103,6 +113,11 @@ class MailLog
         return Address::createArray($this->mailCC);
     }
 
+    public function getMailCCArray(): ?array
+    {
+        return $this->mailCC;
+    }
+
     public function setMailCC(?array $mailCC): self
     {
         $this->mailCC = $this->addressToString($mailCC);
@@ -113,6 +128,11 @@ class MailLog
     public function getMailBcc(): ?array
     {
         return Address::createArray($this->mailBcc);
+    }
+
+    public function getMailBccArray(): ?array
+    {
+        return $this->mailBcc;
     }
 
     public function setMailBcc(?array $mailBcc): self
