@@ -36,7 +36,7 @@ class RequestListener implements EventSubscriberInterface
     {
         $request = $event->getRequest();
 
-        if ($event->isMasterRequest()) {
+        if ($event->isMainRequest()) {
             if (!$this->bag->get('pd_activity.log_request') ||
                 \in_array($request->getMethod(), $this->bag->get('pd_activity.request_exclude_methods'), true)) {
                 return;
