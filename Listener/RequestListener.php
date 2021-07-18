@@ -14,7 +14,7 @@ namespace Pd\ActivityBundle\Listener;
 use Pd\ActivityBundle\Message\HttpLog;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -32,7 +32,7 @@ class RequestListener implements EventSubscriberInterface
     /**
      * Listen Request.
      */
-    public function onKernelRequest(RequestEvent $event): void
+    public function onKernelResponse(ResponseEvent $event): void
     {
         $request = $event->getRequest();
 
@@ -53,6 +53,11 @@ class RequestListener implements EventSubscriberInterface
                 return;
             }
 
+            // Check Content Disposion
+            if ($event->getResponse()->headers->has('Content-Disposition')){
+                return;
+            }
+
             // Send JOB
             $this->bus->dispatch(new HttpLog(
                 $request->getMethod(),
@@ -68,7 +73,7 @@ class RequestListener implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            KernelEvents::REQUEST => [['onKernelRequest']],
+            KernelEvents::RESPONSE => [['onKernelResponse']],
         ];
     }
 }
